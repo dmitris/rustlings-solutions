@@ -15,7 +15,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn is_true_when_even() {
-        assert!();
-    }
+    fn you_can_assert_eq() {
+    	assert!(is_even(2));
+	}
+
+	#[test]
+    fn check_is_even_neg() {
+    	assert!(is_even(3) == false);
+	}
 }

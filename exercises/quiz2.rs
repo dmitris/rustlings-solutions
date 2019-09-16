@@ -25,4 +25,14 @@ fn main() {
     string_slice("  hello there ".trim());
     string("Happy Monday!".to_string().replace("Mon", "Tues"));
     string("mY sHiFt KeY iS sTiCkY".to_lowercase());
+
+    #[test]
+    fn returns_twice_of_positive_numbers() {
+        assert_eq!(times_two(4), 8);
+    }
+
+    #[test]
+    fn returns_twice_of_negative_numbers() {
+        assert_eq!(times_two(-4), -8);
+    }
 }

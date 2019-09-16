@@ -20,9 +20,9 @@ mod tests {
     #[test]
     fn classic_c_structs() {
         // TODO: Instantiate a classic c struct!
-        let green = ColorClassicStruct{
-            name: String::from("green"),
-            hex: String::from("#00FF00"),
+        let green = ColorClassicStruct {
+            name: "green".into(),
+            hex: "#00FF00".into(),
         };
 
         assert_eq!(green.name, "green");
@@ -33,9 +33,7 @@ mod tests {
     fn tuple_structs() {
         // TODO: Instantiate a tuple struct!
         // For more fun, use the field initialization shorthand.
-        let green = ColorTupleStruct(
-            String::from("green"),
-            String::from("#00FF00"));
+        let green = ColorTupleStruct("green".into(), "#00FF00".into());
 
         assert_eq!(green.0, "green");
         assert_eq!(green.1, "#00FF00");

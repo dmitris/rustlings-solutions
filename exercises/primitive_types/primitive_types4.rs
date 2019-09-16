@@ -7,12 +7,6 @@
 #[test]
 fn slice_out_of_array() {
     let a = [1, 2, 3, 4, 5];
-
-<<<<<<< HEAD
-    let nice_slice = &a[1..4];
-=======
     let nice_slice = &a[2..5];
->>>>>>> current state
-
     assert_eq!([2, 3, 4], nice_slice)
 }

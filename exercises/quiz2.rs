@@ -9,22 +9,13 @@
 
 // I AM NOT DONE
 
-fn string_slice(arg: &str) {
-    println!("{}", arg);
-}
-fn string(arg: String) {
-    println!("{}", arg);
-}
+    #[test]
+    fn returns_twice_of_positive_numbers() {
+        assert_eq!(times_two(4), 8);
+    }
 
-fn main() {
-    ("blue");
-    ("red".to_string());
-    (String::from("hi"));
-    ("rust is fun!".to_owned());
-    ("nice weather".into());
-    (format!("Interpolation {}", "Station"));
-    (&String::from("abc")[0..1]);
-    ("  hello there ".trim());
-    ("Happy Monday!".to_string().replace("Mon", "Tues"));
-    ("mY sHiFt KeY iS sTiCkY".to_lowercase());
+    #[test]
+    fn returns_twice_of_negative_numbers() {
+        assert_eq!(times_two(-4), -8);
+    }
 }

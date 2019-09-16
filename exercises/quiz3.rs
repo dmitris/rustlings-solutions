@@ -13,7 +13,6 @@ pub fn times_two(num: i32) -> i32 {
     num * 2
 }
 
-<<<<<<< HEAD
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -27,7 +26,7 @@ mod tests {
     fn returns_twice_of_negative_numbers() {
         // TODO write an assert for `times_two(-4)`
     }
-=======
+
 fn main() {
     string_slice("blue");
     string("red".to_string());
@@ -39,5 +38,4 @@ fn main() {
     string_slice("  hello there ".trim());
     string("Happy Monday!".to_string().replace("Mon", "Tues"));
     string("mY sHiFt KeY iS sTiCkY".to_lowercase());
->>>>>>> learning wip
 }

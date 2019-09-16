@@ -10,7 +10,7 @@
 // I AM NOT DONE
 
 // Put your function here!
-fn calculateprice(num: i32) -> i32 {
+fn calculate_price(num: i32) -> i32 {
 	if num <= 40 {
 		return num * 2
 	}

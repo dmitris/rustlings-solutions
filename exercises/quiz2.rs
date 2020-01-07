@@ -10,7 +10,8 @@
 fn string_slice(arg: &str) {
     println!("{}", arg);
 }
-fn string (arg: String) {
+
+fn string(arg: String) {
     println!("{}", arg);
 }
 

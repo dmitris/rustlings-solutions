@@ -1,8 +1,6 @@
 // variables2.rs
 // Make me compile! Execute the command `rustlings hint variables2` if you want a hint :)
 
-// I AM NOT DONE
-
 fn main() {
     let x: i64 = 0;
     if x == 10 {

@@ -12,7 +12,6 @@ fn print_number(maybe_number: Option<u16>) {
 fn main() {
     print_number(Some(13));
     print_number(Some(99));
-    print_number(None);
 
     let mut numbers: [Option<u16>; 5] = [None; 5];
     for iter in 0..5 {

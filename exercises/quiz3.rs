@@ -7,8 +7,6 @@
 // we expect to get when we call `times_two` with a negative number.
 // No hints, you can do this :)
 
-// I AM NOT DONE
-
 pub fn times_two(num: i32) -> i32 {
     num * 2
 }
@@ -19,13 +17,14 @@ mod tests {
 
     #[test]
     fn returns_twice_of_positive_numbers() {
-        assert_eq!(times_two(4), ???);
+        assert_eq!(times_two(4), 8);
     }
 
     #[test]
     fn returns_twice_of_negative_numbers() {
-        // TODO write an assert for `times_two(-4)`
+        assert_eq!(times_two(-4), -8);
     }
+}
 
 fn main() {
     string_slice("blue");
@@ -38,4 +37,11 @@ fn main() {
     string_slice("  hello there ".trim());
     string("Happy Monday!".to_string().replace("Mon", "Tues"));
     string("mY sHiFt KeY iS sTiCkY".to_lowercase());
+}
+
+fn string_slice(arg: &str) {
+    println!("{}", arg);
+}
+fn string(arg: String) {
+    println!("{}", arg);
 }

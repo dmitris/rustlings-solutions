@@ -24,12 +24,22 @@ use std::fmt;
 use std::io;
 
 // PositiveNonzeroInteger is a struct defined below the tests.
-fn read_and_validate(b: &mut dyn io::BufRead) -> Result<PositiveNonzeroInteger, ???> {
+fn read_and_validate(
+    b: &mut dyn io::BufRead,
+) -> Result<PositiveNonzeroInteger, Box<dyn error::Error>> {
     let mut line = String::new();
-    b.read_line(&mut line);
-    let num: i64 = line.trim().parse();
-    let answer = PositiveNonzeroInteger::new(num);
-    answer
+    match b.read_line(&mut line) {
+        Ok(_) => (),
+        Err(err) => return Err(Box::new(err)),
+    };
+    let num: i64 = match line.trim().parse() {
+        Ok(num) => num,
+        Err(err) => return Err(Box::new(err)),
+    };
+    match PositiveNonzeroInteger::new(num) {
+        Ok(answer) => Result::Ok(answer),
+        Err(err) => return Err(Box::new(err)),
+    }
 }
 
 //
@@ -114,4 +124,40 @@ impl fmt::Display for CreationError {
     }
 }
 
-impl error::Error for CreationError {}
+impl error::Error for CreationError {
+    fn description(&self) -> &str {
+        match *self {
+            CreationError::Negative => "Negative",
+            CreationError::Zero => "Zero",
+        }
+    }
+}
+
+// First hint: To figure out what type should go where the ??? is, take a look
+// at the test helper function `test_with_str`, since it returns whatever
+// `read_and_validate` returns and`test_with_str` has its signature fully
+// specified.
+
+// Next hint: There are three places in `read_and_validate` that we call a
+// function that returns a `Result` (that is, the functions might fail).
+// Apply the `?` operator on those calls so that we return immediately from
+// `read_and_validate` if those function calls fail.
+
+// Another hint: under the hood, the `?` operator calls `From::from`
+// on the error value to convert it to a boxed trait object, a Box<dyn error::Error>,
+// which is polymorphic-- that means that lots of different kinds of errors
+// can be returned from the same function because all errors act the same
+// since they all implement the `error::Error` trait.
+// Check out this section of the book:
+// https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator
+
+// Another another hint: Note that because the `?` operator returns
+// the *unwrapped* value in the `Ok` case, if we want to return a `Result` from
+// `read_and_validate` for *its* success case, we'll have to rewrap a value
+// that we got from the return value of a `?`ed call in an `Ok`-- this will
+// look like `Ok(something)`.
+
+// Another another another hint: `Result`s must be "used", that is, you'll
+// get a warning if you don't handle a `Result` that you get in your
+// function. Read more about that in the `std::result` module docs:
+// https://doc.rust-lang.org/std/result/#results-must-be-used

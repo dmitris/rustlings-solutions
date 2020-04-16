@@ -3,12 +3,17 @@
 // Scroll down for hints!
 
 fn main() {
-    let a = [1,2,3];
-
+    let mut a  = [0; 100];
+    for i in 0..100 {
+    	a[i] = i;
+    }
     if a.len() >= 100 {
         println!("Wow, that's a big array!");
     } else {
-        println!("Meh, I eat arrays like that for breakfast.");
+        println!("Meh, I eat arrays like that for breakfast. Len = {}", a.len());
+    }
+    for x in a.iter() {
+    	println!("element {:?}", x)
     }
 }
 

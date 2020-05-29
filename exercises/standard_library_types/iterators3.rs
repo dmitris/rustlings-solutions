@@ -28,6 +28,17 @@ pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
         (a, b) if a % b != 0 => Err(DivisionError::NotDivisible(NotDivisibleError{dividend: a, divisor: b})),
         (a, b) => Ok(a/b),            
     }
+
+    // // alternatively, with if + return instead of a single match:
+    // if b == 0 {
+    //     return Err(DivisionError::DivideByZero);
+    // }
+    // if a % b == 0 {
+    //     return Ok(a/b)
+    // }
+    // Err(DivisionError::NotDivisible(
+    //     NotDivisibleError{dividend: a, divisor: b})
+    // )
 }
 
 #[cfg(test)]
@@ -62,7 +73,6 @@ mod tests {
     }
 
     // Iterator exercises using your `divide` function
-
     #[test]
     fn result_with_list() {
         let numbers = vec![27, 297, 38502, 81];
@@ -76,6 +86,11 @@ mod tests {
         let numbers = vec![27, 297, 38502, 81];
         let division_results = numbers.into_iter().map(|n| divide(n, 27));
         let x : Vec::<_>= division_results.collect();
+
+        // // using partition (and throwing away the errors) is also possible
+        // let (x, _errors) : (Vec<_>, _) = division_results.into_iter()
+        //                     .partition(Result::is_ok);
+
         assert_eq!(format!("{:?}", x), "[Ok(1), Ok(11), Ok(1426), Ok(3)]");
     }
 }

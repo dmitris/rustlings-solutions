@@ -25,14 +25,17 @@ impl FromStr for Person {
         if s.len() == 0 {
             return Err("empty input".to_owned());
         }
-        let v : Vec<_> = s.split(',').collect();
+        let v: Vec<_> = s.split(',').collect();
         if v.len() != 2 || v[0].len() == 0 || v[1].len() == 0 {
             return Err("bad input".to_owned());
         }
         let maybe_age = v[1].parse::<usize>();
         match maybe_age {
             Err(_) => Err("bad input".to_owned()),
-            Ok(age_years) => Ok(Person{name: v[0].to_owned(), age: age_years}),
+            Ok(age_years) => Ok(Person {
+                name: v[0].to_owned(),
+                age: age_years,
+            }),
         }
     }
 }

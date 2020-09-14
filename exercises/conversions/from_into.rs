@@ -33,10 +33,37 @@ impl Default for Person {
 // If while parsing the age, something goes wrong, then return the default of Person
 // Otherwise, then return an instantiated Person object with the results
 
-// I AM NOT DONE
-
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        if s.len() == 0 {
+            return Person::default();
+        };
+        // 2. Split the given string on the commas present in it
+        let mut it = s.split(',');
+
+        // 3. Extract the first element from the split operation and use it as the name
+        // 4. If the name is empty, then return the default of Person
+        let mut name;
+        match it.next() {
+            None | Some("") => return Person::default(),
+            Some(s) => name = s.to_string(),
+        }
+        let mut age;
+
+        // 5. Extract the other element from the split operation and parse it into a `usize` as the age
+        // If while parsing the age, something goes wrong, then return the default of Person
+        // Otherwise, then return an instantiated Person object with the results
+        match it.next() {
+            Some(s) => match s.parse::<usize>() {
+                Ok(n) => age = n,
+                Err(_) => return Person::default(),
+            },
+            None => return Person::default(),
+        }
+        Person {
+            name: name,
+            age: age,
+        }
     }
 }
 

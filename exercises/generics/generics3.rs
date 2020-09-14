@@ -1,4 +1,3 @@
-
 // An imaginary magical school has a new report card generation system written in Rust!
 // Currently the system only supports creating report cards where the student's grade
 // is represented numerically (e.g. 1.0 -> 5.5).
@@ -21,8 +20,10 @@ pub struct ReportCard<T> {
 
 impl<T: Display> ReportCard<T> {
     pub fn print(&self) -> String {
-        format!("{} ({}) - achieved a grade of {}",
-            &self.student_name, &self.student_age, &self.grade)
+        format!(
+            "{} ({}) - achieved a grade of {}",
+            &self.student_name, &self.student_age, &self.grade
+        )
     }
 }
 

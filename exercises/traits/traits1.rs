@@ -13,7 +13,7 @@ trait AppendBar {
 }
 
 impl AppendBar for String {
-    fn append_bar(self : String) -> String {
+    fn append_bar(self: String) -> String {
         self + "Bar"
     }
 }

@@ -15,10 +15,10 @@ trait AppendBar {
 }
 
 impl AppendBar for Vec<String> {
-	fn append_bar(mut self: Vec<String>) -> Vec<String> {
-		self.push("Bar".to_string());
-		self
-	}
+    fn append_bar(mut self: Vec<String>) -> Vec<String> {
+        self.push("Bar".to_string());
+        self
+    }
 }
 
 #[cfg(test)]

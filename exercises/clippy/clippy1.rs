@@ -10,9 +10,9 @@ fn main() {
     let x = 1.2331f64;
     let y = 1.2332f64;
     let delta = 0.001;
-    if (y-x).abs() < delta {
+    if (y - x).abs() < delta {
         println!("Success!");
     } else {
-		println!("Failure - not near-equal.")
+        println!("Failure - not near-equal.")
     }
 }

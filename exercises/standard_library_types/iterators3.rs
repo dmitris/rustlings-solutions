@@ -23,10 +23,13 @@ pub struct NotDivisibleError {
 // evenly divisible by b.
 // Otherwise, it should return a suitable error.
 pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
-    match(a,b) {
+    match (a, b) {
         (_, 0) => Err(DivisionError::DivideByZero),
-        (a, b) if a % b != 0 => Err(DivisionError::NotDivisible(NotDivisibleError{dividend: a, divisor: b})),
-        (a, b) => Ok(a/b),            
+        (a, b) if a % b != 0 => Err(DivisionError::NotDivisible(NotDivisibleError {
+            dividend: a,
+            divisor: b,
+        })),
+        (a, b) => Ok(a / b),
     }
 
     // // alternatively, with if + return instead of a single match:
@@ -77,7 +80,7 @@ mod tests {
     fn result_with_list() {
         let numbers = vec![27, 297, 38502, 81];
         let division_results = numbers.into_iter().map(|n| divide(n, 27));
-        let x : Result<Vec<_>, DivisionError> = division_results.collect();
+        let x: Result<Vec<_>, DivisionError> = division_results.collect();
         assert_eq!(format!("{:?}", x), "Ok([1, 11, 1426, 3])");
     }
 
@@ -85,7 +88,7 @@ mod tests {
     fn list_of_results() {
         let numbers = vec![27, 297, 38502, 81];
         let division_results = numbers.into_iter().map(|n| divide(n, 27));
-        let x : Vec::<_>= division_results.collect();
+        let x: Vec<_> = division_results.collect();
 
         // // using partition (and throwing away the errors) is also possible
         // let (x, _errors) : (Vec<_>, _) = division_results.into_iter()

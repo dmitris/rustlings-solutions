@@ -7,7 +7,7 @@ macro_rules! my_macro {
     };
     ($val:expr) => {
         println!("Look at this other macro: {}", $val);
-    }
+    };
 }
 
 fn main() {

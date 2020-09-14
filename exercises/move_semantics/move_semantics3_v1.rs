@@ -16,29 +16,13 @@ fn main() {
 }
 
 fn fill_vec(vec: &Vec<i32>) -> Vec<i32> {
-	let mut vec2 = vec.clone();
+    let mut vec2 = vec.clone();
     vec2.push(22);
     vec2.push(44);
     vec2.push(66);
 
     vec2
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // The difference between this one and the previous ones is that the first line
 // of `fn fill_vec` that had `let mut vec = vec;` is no longer there. You can,

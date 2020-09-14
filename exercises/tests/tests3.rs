@@ -14,11 +14,11 @@ mod tests {
 
     #[test]
     fn you_can_assert_eq() {
-    	assert!(is_even(2));
-	}
+        assert!(is_even(2));
+    }
 
-	#[test]
+    #[test]
     fn check_is_even_neg() {
-    	assert!(is_even(3) == false);
-	}
+        assert!(is_even(3) == false);
+    }
 }
